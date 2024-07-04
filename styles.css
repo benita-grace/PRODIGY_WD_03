@@ -1,0 +1,306 @@
+* {
+    color: white;
+    font-family: sans-serif;
+    transition: 0.2s ease-in-out;
+    user-select: none;
+}
+
+.align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background: url("https://i.makeagif.com/media/1-12-2021/izAv5U.gif") no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    padding-top: 5vh;
+    overflow: hidden; /* Ensures animated elements do not cause scrollbars */
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.game-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #7cc5db;
+    text-shadow: 0 0 10px #0b3199, 0 0 20px #0b3199, 0 0 30px #0b3199;
+    transition: 0.2s ease-in-out;
+    animation: slideInDown 1s ease-in-out, glow 1.5s infinite alternate, zoomInOut 3s infinite;
+}
+
+/* Label for game mode */
+label {
+    font-size: 1.2rem;
+    color: #f1edee; /* Neon pink color */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 40px; /* Adjusted margin-top */
+    animation: neonGlow 1.5s infinite alternate; /* Neon glow animation */
+}
+
+/* Neon glow animation */
+@keyframes neonGlow {
+    0% {
+        text-shadow: 0 0 10px #FF2E63, 0 0 20px #FF2E63, 0 0 30px #FF2E63, 0 0 40px #FF2E63;
+    }
+    100% {
+        text-shadow: 0 0 20px #FF2E63, 0 0 30px #FF2E63, 0 0 40px #FF2E63, 0 0 50px #FF2E63;
+    }
+}
+
+/* Select box */
+select {
+    padding: 8px 20px;
+    font-size: 1rem;
+    color: #FFF; /* White color for text */
+    background-color: #2C2C2C; /* Dark background color */
+    border: 2px solid #FF2E63; /* Neon pink border */
+    border-radius: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease-in-out;
+    margin-top: 20px; /* Adjusted margin-top */
+    animation: neonBorder 1.5s infinite alternate; /* Neon border animation */
+}
+
+/* Neon border animation */
+@keyframes neonBorder {
+    0% {
+        box-shadow: 0 0 10px #FF2E63;
+    }
+    100% {
+        box-shadow: 0 0 20px #FF2E63, 0 0 30px #FF2E63, 0 0 40px #FF2E63;
+    }
+}
+
+/* Styling options */
+option {
+    background-color: #2C2C2C; /* Dark background color */
+    color: #FFF; /* White color for text */
+}
+
+/* Hover effect for select box */
+select:hover,
+select:focus {
+    border-color: #08D9D6; /* Cyan border color on hover/focus */
+    box-shadow: 0 0 10px #08D9D6; /* Cyan box shadow on hover/focus */
+}
+
+.turn-container {
+    width: 170px;
+    height: 80px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    position: relative;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.turn-container h3 {
+    margin: 0;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.turn-container .turn-box {
+    border: 3px solid #000;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5); /* Added background for better readability */
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    /* animation: zoomIn 1s ease-in-out; */
+}
+
+.turn-container .turn-box:hover {
+    color: #08D9D6;
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+
+.turn-container .turn-box:nth-child(even) {
+    border-right: none;
+}
+
+.bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 85px;
+    height: 40px;
+    background-color: #FF2E63;
+    z-index: -1;
+}
+
+/* Main grid */
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    height: 250px;
+    width: 250px;
+    border: 2px solid #000;
+    box-shadow: 0 0 10px #FF2E63, 0 0 20px #FF2E63;
+    background: rgba(0, 0, 0, 0.1); /* Added background for better readability */
+    animation: bounceIn 1.5s ease-in-out;
+    margin: auto;
+    margin-top: 20px; /* Add space from the top */
+}
+
+@keyframes bounceIn {
+    0%, 20%, 40%, 60%, 80%, 100% {
+        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    0% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+    40% {
+        transform: scale3d(0.9, 0.9, 0.9);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+    80% {
+        transform: scale3d(0.97, 0.97, 0.97);
+    }
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes flipInX {
+    from {
+        transform: perspective(400px) rotateX(90deg);
+        animation-timing-function: ease-in;
+        opacity: 0;
+    }
+    40% {
+        transform: perspective(400px) rotateX(-20deg);
+        animation-timing-function: ease-in;
+    }
+    60% {
+        transform: perspective(400px) rotateX(10deg);
+        opacity: 1;
+    }
+    80% {
+        transform: perspective(400px) rotateX(-5deg);
+    }
+    to {
+        transform: perspective(400px);
+    }
+}
+
+.box {
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: 700;
+    border: 2px solid #000;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    background: rgba(0, 0, 0, 0.5); /* Added background for better readability */
+    animation: flipInX 1s ease-in-out, zoomInOut 2s infinite alternate;
+}
+
+.box:hover {
+    background-color: #FF2E63;
+    transform: scale(1.1);
+}
+
+#play-again {
+    background-color: #FF2E63;
+    padding: 10px 25px;
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 0 10px #FF2E
+    63, 0 0 20px #FF2E63;
+    transition: padding 0.2s ease-in-out, background-color 0.2s ease-in-out, color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    animation: fadeIn 2s ease-in-out;
+    }
+    
+    #play-again
+    {
+    padding: 10px 40px;
+    background-color: #08D9D6;
+    color: #000;
+    box-shadow: 0 0 10px #08D9D6, 0 0 20px #08D9D6;
+    transform: scale(1.1);
+    }
+    
+    /* Center align X and O symbols */
+    .x-symbol,
+    .o-symbol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: bold;
+    }
+    
+    /* Animation for X and O symbols */
+    .x-symbol {
+    animation: slideInDown 1s ease-in-out;
+    }
+    
+    .o-symbol {
+    animation: slideInUp 1s ease-in-out;
+    }
+    
+    /* Cool animation for X */
+    @keyframes slideInDown {
+    from {
+    transform: translateY(-100%);
+    }
+    to {
+    transform: translateY(0);
+    }
+    }
+    
+    /* Cool animation for O */
+    @keyframes slideInUp {
+    from {
+    transform: translateY(100%);
+    }
+    to {
+    transform: translateY(0);
+    }
+    }
